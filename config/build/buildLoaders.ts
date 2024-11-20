@@ -6,7 +6,12 @@ export function buildLoaders(options : BuildOptions): webpack.RuleSetRule[] {
     const textLoader = {
         test: /\.txt$/,
         use: 'raw-loader',
-        }
+    }
+
+    const svgLoader = {
+        test: /\.svg$/,
+        use: ['@svgr/webpack'],
+    }
 
     const tsLoader = {
         test: /\.tsx?$/,
@@ -33,16 +38,20 @@ export function buildLoaders(options : BuildOptions): webpack.RuleSetRule[] {
         ],
     }
 
-    const imageLoader = {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: 'asset/resource',
+    const fileLoader = {
+        test: /\.(png|jpe?g|gif|woff2|woff)$/i,
+        use: [
+            {
+                loader: 'file-loader',
+            },
+        ]
     }
 
     return [
         tsLoader,
+        svgLoader,
+        fileLoader,
         cssLoader,
-        imageLoader,
         textLoader,
     ]
-
 }
