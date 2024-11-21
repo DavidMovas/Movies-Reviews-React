@@ -26,7 +26,7 @@ export function buildWebpackConfig(options: BuildOptions): webpack.Configuration
                 chunks: 'async',
             },
         },
-        plugins: buildPlugins(paths),
+        plugins: buildPlugins(options, paths),
         resolve: buildResolvers(options),
         devtool: options.isDev? 'inline-source-map' : undefined,
         devServer: options.isDev ? buildDevServer(options) : undefined,
