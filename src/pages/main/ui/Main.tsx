@@ -5,7 +5,9 @@ function Main() {
     const {t} = useTranslation();
 
     return (
-        <h1>{t('Main')}</h1>
+        <div>
+            <h1>{t('Main')}</h1>
+        </div>
     );
 }
 
