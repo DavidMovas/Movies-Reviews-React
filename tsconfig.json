@@ -1,5 +1,8 @@
 {
   "compilerOptions": {
+    "types": [
+      "@testing-library/jest-dom",
+    ],
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
@@ -18,5 +21,8 @@
         "./src/*"
       ]
     }
-  }
+  },
+  "include": [
+    "./config/jest/setupJest.ts",
+  ]
 }
