@@ -125,7 +125,8 @@
   "scripts": {
     "start": "webpack-dev-server --config webpack.config.ts",
     "build:dev": "webpack --config webpack.config.ts --env mode=development",
-    "build:prod": "webpack --config webpack.config.ts --env mode=production"
+    "build:prod": "webpack --config webpack.config.ts --env mode=production",
+    "eslint": "eslint \"**/*.{ts,tsx}\""
   },
   "keywords": [],
   "author": "",

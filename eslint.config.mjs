@@ -16,6 +16,10 @@ export default [
           version: "detect",
         }
     },
+      rules: {
+          "react/jsx-indent": [2, 4],
+          "react/jsx-filename-extension": [2, {extensions: [".js", ".jsx", ".ts", ".tsx"]}],
+      },
   },
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
