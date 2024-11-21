@@ -4,6 +4,8 @@ import { BuildPaths } from "./types/config";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import { buildConnector } from "undici-types";
 import { BuildOptions } from "./types/config";
+import { Simulate } from "react-dom/test-utils";
+import playing = Simulate.playing;
 
 export function buildPlugins(options: BuildOptions, {html}: BuildPaths): webpack.WebpackPluginInstance[] {
     return [
@@ -18,5 +20,6 @@ export function buildPlugins(options: BuildOptions, {html}: BuildPaths): webpack
         new webpack.DefinePlugin({
             __IS_DEV__: JSON.stringify(options.isDev),
         }),
+        new webpack.HotModuleReplacementPlugin(),
     ]
 }
