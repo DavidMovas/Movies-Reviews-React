@@ -1,5 +1,7 @@
 {
   "Language": "RU",
   "Main": "Главная",
-  "Page not found": "Страница не найдена"
+  "Page not found": "Страница не найдена",
+  "Something went wrong": "Что-то пошло не так",
+  "Refresh page": "Обновить страницу"
 }
