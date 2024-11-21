@@ -19,7 +19,7 @@ export function buildLoaders(options : BuildOptions): webpack.RuleSetRule[] {
         exclude: /node_modules/,
     }
 
-    const cssLoader = {
+    const scssLoader = {
         test: /\.s[ac]ss$/i,
         use: [
             options.isDev ? "style-loader" : MiniCssExtractPlugin.loader,
@@ -27,14 +27,28 @@ export function buildLoaders(options : BuildOptions): webpack.RuleSetRule[] {
                 loader: "css-loader",
                 options: {
                     modules: {
+                        namedExport: false,
                         auto: (resPath :string) => {
                             Boolean(resPath.includes('.module.'))
                         },
-                        localIdentName: options.isDev ? '[path][name]__[local]--[hash:base64:5]' : '[hash:base64:8]',
+                        localIdentName: options.isDev ? '[path][name]__[local]--[hash:base64:5]' : '[hash:base64:5]',
                     },
                 }
             },
             "sass-loader"
+        ]
+    }
+
+    const cssLoader = {
+        test: /\.css$/,
+        use: [
+            'style-loader',
+            {
+                loader: 'css-loader',
+                options: {
+                    modules: true,
+                },
+            },
         ],
     }
 
@@ -51,7 +65,8 @@ export function buildLoaders(options : BuildOptions): webpack.RuleSetRule[] {
         tsLoader,
         svgLoader,
         fileLoader,
-        cssLoader,
         textLoader,
+        scssLoader,
+        cssLoader
     ]
 }
