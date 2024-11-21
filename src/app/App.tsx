@@ -1,10 +1,10 @@
+import { BrowserRouter as Router } from "react-router-dom";
 import { classNames } from "shared/lib/classNames/classNames";
 import { AppRouter } from "app/providers/Router";
 import { Navbar } from "widgets/Navbar";
 import { Sidebar } from "widgets/Sidebar";
 import { useTheme } from "app/providers/ThemeProvider";
-import { Suspense } from "react";
-import { BrowserRouter as Router } from "react-router-dom";
+import React, { Suspense } from "react";
 import './styles/index.scss'
 
 
