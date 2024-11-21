@@ -19,8 +19,9 @@ export const Sidebar = ({className}: SidebarProps) => {
 
     return (
         <div
-            className={classNames(cls.Sidebar, {[cls.collapsed]: collapsed}, [className])}
+            className={classNames(cls.sidebar, {[cls.collapsed]: collapsed}, [className])}
         >
+            {/* eslint-disable-next-line i18next/no-literal-string */}
             <Button theme={ThemeButton.PRIMARY} onClick={onToggle}>Toggle</Button>
             <div className={cls.switchers}>
                 <ThemeSwitcher />
