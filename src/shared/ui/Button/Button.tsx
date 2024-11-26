@@ -6,6 +6,7 @@ export enum ThemeButton {
     CLEAR = 'clear',
     PRIMARY = 'primary',
     SECONDARY = 'secondary',
+    OUTLINE = 'outline',
 }
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {

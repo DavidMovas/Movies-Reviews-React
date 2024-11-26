@@ -4,6 +4,17 @@
     z-index:  -1;
     opacity: 0;
     pointer-events: none;
+    color: var(--primary-color);
+}
+
+.Modal.dark {
+    --bg-color: rgb(14 20 27 / var(--bg-opacity));
+    --primary-color: rgb(255 255 255 / var(--text-opacity));
+}
+
+.Modal.light {
+    --bg-color: rgb(255 255 255 / var(--bg-opacity));
+    --primary-color: rgb(14 20 27 / var(--text-opacity));
 }
 
 .overlay {
@@ -11,7 +22,8 @@
     height: 100%;
     background: var(--overlay-color);
     display: flex;
-    place-content: center center;
+    justify-content: center;
+    align-items: center;
 }
 
 .content {

@@ -27,3 +27,12 @@
     border: none;
     outline: none;
 }
+
+.outline {
+    padding: 6px 13px;
+    color: var(--secondary-color);
+    background: none;
+    border-radius: var(--super-border-radius);
+    border: 1px solid var(--secondary-color);
+    outline: none;
+}
