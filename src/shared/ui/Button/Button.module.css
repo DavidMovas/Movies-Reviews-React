@@ -14,7 +14,7 @@
     padding: 6px 13px;
     background: var(--secondary-color);
     color: var(--primary-color);
-    border-radius: var(--border-radius);
+    border-radius: var(--super-border-radius);
     border: none;
     outline: none;
 }
@@ -22,7 +22,7 @@
 .secondary {
     padding: 6px 13px;
     color: var(--inverted-primary-color);
-    border-radius: var(--border-radius);
+    border-radius: var(--super-border-radius);
     background: none;
     border: none;
     outline: none;

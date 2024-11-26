@@ -22,5 +22,12 @@
     --text-opacity: 1;
 
     // Border radius
-    --border-radius: 9999px;
+    --border-radius: 30px;
+    --super-border-radius: 9999px;
+
+    // Indexes
+    --modal-z-index: 10;
+
+    // Colors
+    --overlay-color: rgba(0 0 0 / 60%);
 }
