@@ -7,16 +7,11 @@ export interface User {
     deletedAt: string | null;
 }
 
-export interface UserSchema {
-    authData?: User
+export interface UserToken {
+    access_token: string;
 }
 
-
-/*
-	ID        int        `json:"id"`
-	Username  string     `json:"username"`
-	Email     string     `json:"email"`
-	Role      string     `json:"role"`
-	CreatedAt time.Time  `json:"createdAt"`
-	DeletedAt *time.Time `json:"deletedAt,omitempty"`
-*/
+export interface UserSchema {
+    authData?: User
+    access_token?: string;
+}

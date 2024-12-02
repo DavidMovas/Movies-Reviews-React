@@ -4,5 +4,9 @@
   "Page not found": "Страница не найдена",
   "Something went wrong": "Что-то пошло не так",
   "Refresh page": "Обновить страницу",
-  "Login": "Войти"
+  "Login": "Войти",
+  "Email": "Почта",
+  "Password": "Пароль",
+  "Login form": "Форма авторизации",
+  "You entered wrong email or password": "Вы ввели неправильный логин или пароль"
 }

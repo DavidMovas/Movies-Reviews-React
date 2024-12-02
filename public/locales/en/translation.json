@@ -4,5 +4,9 @@
   "Page not found": "Page not found",
   "Something went wrong": "Something went wrong",
   "Refresh page": "Refresh page",
-  "Login": "Login"
+  "Login": "Login",
+  "Email": "Email",
+  "Password": "Password",
+  "Login form": "Login form",
+  "You entered wrong email or password": "You entered wrong email or password"
 }
