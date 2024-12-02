@@ -7,10 +7,9 @@ import { Input } from "shared/ui/Input/Input";
 import { useDispatch, useSelector } from "react-redux";
 import { loginActions } from "features/AuthByUsername/model/slice/loginSlice";
 import { getLoginState } from "features/AuthByUsername/model/selectors/getLoginState/getLoginState";
-import { loginByEmail } from "../../model/services/loginByEmail/loginByEmail";
+import { loginByEmail, LoginError } from "../../model/services/loginByEmail/loginByEmail";
 import { AppDispatch } from "app/providers/StoreProvider/config/store";
 import { Text, TextTheme } from "shared/ui/Text/Text";
-
 
 interface LoginFormProps {
     className?: string;
@@ -39,7 +38,12 @@ export const LoginForm = memo(({className}: LoginFormProps) => {
             className={classNames(cls.LoginForm, {}, [className])}
         >
             <Text title={t('Login form')}></Text>
-            {error && <Text text={error} theme={TextTheme.ERROR} />}
+            {error == LoginError.INCORRECT_DATA &&
+                <Text text={t('You entered wrong email or password')} theme={TextTheme.ERROR} />}
+            {error == LoginError.NOT_FOUND &&
+                <Text text={t('User not found')} theme={TextTheme.ERROR} />}
+            {error == LoginError.SERVER_ERROR &&
+                <Text text={t('Server error, please try later')} theme={TextTheme.ERROR} />}
             <Input
                 type="text"
                 value={email}

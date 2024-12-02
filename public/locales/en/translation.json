@@ -8,5 +8,7 @@
   "Email": "Email",
   "Password": "Password",
   "Login form": "Login form",
-  "You entered wrong email or password": "You entered wrong email or password"
+  "You entered wrong email or password": "You entered wrong email or password",
+  "User not found": "User not found",
+  "Server error, please try later": "Server error, please try later"
 }
