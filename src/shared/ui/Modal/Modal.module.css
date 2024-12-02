@@ -18,10 +18,10 @@
 
 .content {
     padding: 20px;
-    border-radius: var(--border-radius);
+    border-radius: var(--border-radius-modal);
     background: var(--bg-color);
-    transition: 0.3s transform;
-    transform: scale(0.5);
+    transition: 0.4s transform;
+    transform: scale(0.2);
     max-width: 60%;
 }
 
