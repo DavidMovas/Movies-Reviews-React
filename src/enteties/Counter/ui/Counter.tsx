@@ -18,8 +18,11 @@ export const Counter = () => {
 
     return (
         <div>
+            {/* eslint-disable-next-line i18next/no-literal-string */}
             <h1>Value = {counterValue}</h1>
+            {/* eslint-disable-next-line i18next/no-literal-string */}
             <Button theme={ButtonTheme.BACKGROUND_INVERTED} onClick={increment}>Increment</Button>
+            {/* eslint-disable-next-line i18next/no-literal-string */}
             <Button  theme={ButtonTheme.BACKGROUND_INVERTED} onClick={decrement}>Decrement</Button>
         </div>
     );

@@ -7,16 +7,6 @@
     color: var(--primary-color);
 }
 
-.Modal.dark {
-    --bg-color: rgb(14 20 27 / var(--bg-opacity));
-    --primary-color: rgb(255 255 255 / var(--text-opacity));
-}
-
-.Modal.light {
-    --bg-color: rgb(255 255 255 / var(--bg-opacity));
-    --primary-color: rgb(14 20 27 / var(--text-opacity));
-}
-
 .overlay {
     width: 100%;
     height: 100%;
