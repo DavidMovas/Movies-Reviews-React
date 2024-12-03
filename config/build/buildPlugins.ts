@@ -6,21 +6,35 @@ import { BuildOptions } from "./types/config";
 import {BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 
 export function buildPlugins(options: BuildOptions, {html}: BuildPaths): webpack.WebpackPluginInstance[] {
-    return [
-        new HtmlWebpackPlugin({
-            template: html,
-        }),
-        new webpack.ProgressPlugin(),
-        new MiniCssExtractPlugin({
-            filename: 'css/[name].[contenthash:8].css',
-            chunkFilename: 'css/[name].[contenthash:8].css',
-        }),
-        new webpack.DefinePlugin({
-            __IS_DEV__: JSON.stringify(options.isDev),
-        }),
-        new webpack.HotModuleReplacementPlugin(),
-        new BundleAnalyzerPlugin({
+   var plugins: webpack.WebpackPluginInstance[] = [];
+
+    plugins.push(new HtmlWebpackPlugin({
+        template: html,
+    }))
+
+    plugins.push(new HtmlWebpackPlugin({
+        template: html,
+    }))
+
+    plugins.push(new webpack.ProgressPlugin())
+
+    plugins.push(new MiniCssExtractPlugin({
+        filename: 'css/[name].[contenthash:8].css',
+        chunkFilename: 'css/[name].[contenthash:8].css',
+    }))
+
+    plugins.push(new webpack.DefinePlugin({
+        __IS_DEV__: JSON.stringify(options.isDev),
+    }))
+
+    plugins.push(new webpack.HotModuleReplacementPlugin())
+
+    if (!options.isDev) {
+        plugins.push(new BundleAnalyzerPlugin({
             openAnalyzer: false,
-        }),
-    ]
+            analyzerPort: 3003,
+        }))
+    }
+
+    return plugins;
 }

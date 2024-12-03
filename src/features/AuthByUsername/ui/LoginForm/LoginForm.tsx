@@ -1,26 +1,42 @@
-import React, { memo, useCallback } from 'react';
+import React, { memo, useCallback, useEffect } from 'react';
 import { classNames } from "shared/lib/classNames/classNames";
 import { useTranslation } from "react-i18next";
-import * as cls from "./LoginForm.module.css";
 import { Button, ButtonTheme } from "shared/ui/Button/Button";
 import { Input } from "shared/ui/Input/Input";
-import { useDispatch, useSelector } from "react-redux";
-import { loginActions } from "features/AuthByUsername/model/slice/loginSlice";
-import { getLoginState } from "features/AuthByUsername/model/selectors/getLoginState/getLoginState";
+import { useDispatch, useSelector, useStore } from "react-redux";
+import { loginActions, loginReducer } from "features/AuthByUsername/model/slice/loginSlice";
 import { loginByEmail, LoginError } from "../../model/services/loginByEmail/loginByEmail";
 import { AppDispatch } from "app/providers/StoreProvider/config/store";
 import { Text, TextTheme } from "shared/ui/Text/Text";
+import { ReduxStoreWithManager } from "app/providers/StoreProvider";
+import { getLoginUserEmail } from "enteties/User/model/selectors/getLoginUserEmail/getLoginUserEmail";
+import { getLoginUserPassword } from "enteties/User/model/selectors/getLoginUserPassword/getLoginUserPassword";
+import { getLoginUserError } from "enteties/User/model/selectors/getLoginUserError/getLoginUserError";
+import { getLogingUserIsLoading } from "enteties/User/model/selectors/getLoginUserIsLoading/getLogingUserIsLoading";
+import * as cls from "./LoginForm.module.css";
 
 interface LoginFormProps {
     className?: string;
 }
 
 // eslint-disable-next-line react/display-name
-export const LoginForm = memo(({className}: LoginFormProps) => {
+const LoginForm = memo(({className}: LoginFormProps) => {
    const {t} = useTranslation();
 
    const dispatch = useDispatch<AppDispatch>();
-   const {email, password, isLoading, error} = useSelector(getLoginState)
+   const store = useStore() as ReduxStoreWithManager;
+   const email = useSelector(getLoginUserEmail);
+   const password = useSelector(getLoginUserPassword);
+   const error = useSelector(getLoginUserError);
+   const isLoading = useSelector(getLogingUserIsLoading);
+
+    useEffect(() => {
+        store.reducerManager.add('loginForm', loginReducer);
+
+        return () => {
+            store.reducerManager.remove('loginForm');
+        }
+    }, []);
 
    const onChangeEmail = useCallback((value: string) => {
        dispatch(loginActions.setEmail(value))
@@ -69,3 +85,5 @@ export const LoginForm = memo(({className}: LoginFormProps) => {
         </div>
     );
 });
+
+export default LoginForm;

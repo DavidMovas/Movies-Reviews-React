@@ -5,8 +5,8 @@ import { LOCAL_STORAGE_USER_TOKEN} from "shared/consts/localStorage";
 import { UserToken } from "enteties/User/model/types/user";
 
 interface LoginByEmailProps {
-    email: string,
-    password: string
+    email: string | undefined,
+    password: string | undefined,
 }
 
 export enum LoginError {
