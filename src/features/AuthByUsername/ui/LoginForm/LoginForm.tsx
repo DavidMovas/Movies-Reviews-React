@@ -13,11 +13,15 @@ import { getLoginUserEmail } from "enteties/User/model/selectors/getLoginUserEma
 import { getLoginUserPassword } from "enteties/User/model/selectors/getLoginUserPassword/getLoginUserPassword";
 import { getLoginUserError } from "enteties/User/model/selectors/getLoginUserError/getLoginUserError";
 import { getLogingUserIsLoading } from "enteties/User/model/selectors/getLoginUserIsLoading/getLogingUserIsLoading";
-import { DynamicModuleLoader } from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
+import { DynamicModuleLoader, ReducersList } from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import * as cls from "./LoginForm.module.css";
 
 interface LoginFormProps {
     className?: string;
+}
+
+const initialReducers: ReducersList = {
+    loginForm: loginReducer,
 }
 
 // eslint-disable-next-line react/display-name
@@ -51,7 +55,7 @@ const LoginForm = memo(({className}: LoginFormProps) => {
     }, [dispatch, email, password])
 
     return (
-        <DynamicModuleLoader key={'loginForm'} reducer={loginReducer} removeAfterUnmount={true}>
+        <DynamicModuleLoader key={'loginForm'} reducers={initialReducers} removeAfterUnmount={true}>
             <div
                 className={classNames(cls.LoginForm, {}, [className])}
             >
