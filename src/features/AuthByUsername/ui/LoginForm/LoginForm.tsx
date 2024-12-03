@@ -13,6 +13,7 @@ import { getLoginUserEmail } from "enteties/User/model/selectors/getLoginUserEma
 import { getLoginUserPassword } from "enteties/User/model/selectors/getLoginUserPassword/getLoginUserPassword";
 import { getLoginUserError } from "enteties/User/model/selectors/getLoginUserError/getLoginUserError";
 import { getLogingUserIsLoading } from "enteties/User/model/selectors/getLoginUserIsLoading/getLogingUserIsLoading";
+import { DynamicModuleLoader } from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import * as cls from "./LoginForm.module.css";
 
 interface LoginFormProps {
@@ -50,39 +51,41 @@ const LoginForm = memo(({className}: LoginFormProps) => {
     }, [dispatch, email, password])
 
     return (
-        <div
-            className={classNames(cls.LoginForm, {}, [className])}
-        >
-            <Text title={t('Login form')}></Text>
-            {error == LoginError.INCORRECT_DATA &&
-                <Text text={t('You entered wrong email or password')} theme={TextTheme.ERROR} />}
-            {error == LoginError.NOT_FOUND &&
-                <Text text={t('User not found')} theme={TextTheme.ERROR} />}
-            {error == LoginError.SERVER_ERROR &&
-                <Text text={t('Server error, please try later')} theme={TextTheme.ERROR} />}
-            <Input
-                type="text"
-                value={email}
-                className={cls.input}
-                onChange={onChangeEmail}
-                placeholder={t('Email')}
-            />
-            <Input
-                type="text"
-                value={password}
-                className={cls.input}
-                onChange={onChangePassword}
-                placeholder={t('Password')}
-            />
-            <Button
-                theme={ButtonTheme.OUTLINE}
-                className={cls.loginBtn}
-                onClick={onLoginClick}
-                disabled={isLoading}
+        <DynamicModuleLoader key={'loginForm'} reducer={loginReducer} removeAfterUnmount={true}>
+            <div
+                className={classNames(cls.LoginForm, {}, [className])}
             >
-                {t('Login')}
-            </Button>
-        </div>
+                <Text title={t('Login form')}></Text>
+                {error == LoginError.INCORRECT_DATA &&
+                    <Text text={t('You entered wrong email or password')} theme={TextTheme.ERROR}/>}
+                {error == LoginError.NOT_FOUND &&
+                    <Text text={t('User not found')} theme={TextTheme.ERROR}/>}
+                {error == LoginError.SERVER_ERROR &&
+                    <Text text={t('Server error, please try later')} theme={TextTheme.ERROR}/>}
+                <Input
+                    type="text"
+                    value={email}
+                    className={cls.input}
+                    onChange={onChangeEmail}
+                    placeholder={t('Email')}
+                />
+                <Input
+                    type="text"
+                    value={password}
+                    className={cls.input}
+                    onChange={onChangePassword}
+                    placeholder={t('Password')}
+                />
+                <Button
+                    theme={ButtonTheme.OUTLINE}
+                    className={cls.loginBtn}
+                    onClick={onLoginClick}
+                    disabled={isLoading}
+                >
+                    {t('Login')}
+                </Button>
+            </div>
+        </DynamicModuleLoader>
     );
 });
 
