@@ -6,15 +6,18 @@ import { ThemeProvider } from "app/providers/ThemeProvider";
 import "shared/config/i18n/i18n";
 import './app/styles/index.scss';
 import { StoreProvider } from "app/providers/StoreProvider";
+import { BrowserRouter} from "react-router-dom";
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-    <StoreProvider>
-        <React.StrictMode>
-            <ErrorBoundary>
-                <ThemeProvider>
-                    <App/>
-                </ThemeProvider>
-            </ErrorBoundary>
-        </React.StrictMode>
-    </StoreProvider>
+    <BrowserRouter>
+        <StoreProvider>
+            <React.StrictMode>
+                <ErrorBoundary>
+                    <ThemeProvider>
+                        <App/>
+                    </ThemeProvider>
+                </ErrorBoundary>
+            </React.StrictMode>
+        </StoreProvider>
+    </BrowserRouter>
 );

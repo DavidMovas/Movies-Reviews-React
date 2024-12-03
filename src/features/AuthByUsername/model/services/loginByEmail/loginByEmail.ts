@@ -3,6 +3,7 @@ import axios from "axios";
 import {  userActions } from "enteties/User";
 import { LOCAL_STORAGE_USER_TOKEN} from "shared/consts/localStorage";
 import { UserToken } from "enteties/User/model/types/user";
+import { ThunkConfig } from "app/providers/StoreProvider";
 
 interface LoginByEmailProps {
     email: string | undefined,
@@ -15,14 +16,14 @@ export enum LoginError {
     SERVER_ERROR = "SERVER_ERROR",
 }
 
-export const loginByEmail = createAsyncThunk<UserToken, LoginByEmailProps, {rejectValue: string}>(
+export const loginByEmail = createAsyncThunk<UserToken, LoginByEmailProps, ThunkConfig<string>>(
     "login/loginByEmail",
-    async (authData:LoginByEmailProps, thunkAPI) => {
+    async (authData, {dispatch, extra, rejectWithValue}) => {
         try {
-            const response = await axios.post("http://localhost:8000/api/auth/login", authData);
+            const response = await extra.api.post("/api/auth/login", authData);
 
             localStorage.setItem(LOCAL_STORAGE_USER_TOKEN, JSON.stringify(response.data));
-            thunkAPI.dispatch(userActions.setAuthData(response.data));
+            dispatch(userActions.setAuthData(response.data));
 
             return response.data
         } catch (err) {
@@ -30,15 +31,15 @@ export const loginByEmail = createAsyncThunk<UserToken, LoginByEmailProps, {reje
                 const statusCode = err.response?.status;
 
                 if (statusCode === 400) {
-                    return thunkAPI.rejectWithValue(LoginError.INCORRECT_DATA);
+                    return rejectWithValue(LoginError.INCORRECT_DATA);
                 }
 
                 if (statusCode === 404) {
-                    return  thunkAPI.rejectWithValue(LoginError.NOT_FOUND);
+                    return  rejectWithValue(LoginError.NOT_FOUND);
                 }
             }
 
-            return thunkAPI.rejectWithValue(LoginError.SERVER_ERROR);
+            return rejectWithValue(LoginError.SERVER_ERROR);
         }
     },
 );

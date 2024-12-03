@@ -25,6 +25,7 @@ export function buildPlugins(options: BuildOptions, {html}: BuildPaths): webpack
 
     plugins.push(new webpack.DefinePlugin({
         __IS_DEV__: JSON.stringify(options.isDev),
+        __API__: JSON.stringify(options.apiUrl),
     }))
 
     plugins.push(new webpack.HotModuleReplacementPlugin())
