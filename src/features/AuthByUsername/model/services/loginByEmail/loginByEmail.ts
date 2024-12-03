@@ -1,9 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
-import {  userActions } from "enteties/User";
-import { LOCAL_STORAGE_USER_TOKEN} from "shared/consts/localStorage";
-import { UserToken } from "enteties/User/model/types/user";
+import { userActions, UserSchema } from "enteties/User";
+import { LOCAL_STORAGE_USER, LOCAL_STORAGE_USER_TOKEN } from "shared/consts/localStorage";
 import { ThunkConfig } from "app/providers/StoreProvider";
+import axios from "axios";
 
 interface LoginByEmailProps {
     email: string | undefined,
@@ -16,14 +15,25 @@ export enum LoginError {
     SERVER_ERROR = "SERVER_ERROR",
 }
 
-export const loginByEmail = createAsyncThunk<UserToken, LoginByEmailProps, ThunkConfig<string>>(
+export const loginByEmail = createAsyncThunk<UserSchema, LoginByEmailProps, ThunkConfig<string>>(
     "login/loginByEmail",
     async (authData, {dispatch, extra, rejectWithValue}) => {
         try {
             const response = await extra.api.post("/api/auth/login", authData);
 
-            localStorage.setItem(LOCAL_STORAGE_USER_TOKEN, JSON.stringify(response.data));
-            dispatch(userActions.setAuthData(response.data));
+            const user: UserSchema = JSON.parse(JSON.stringify(response.data));
+
+            console.log("username: ", user.user?.username)
+
+            if (user.access_token) {
+                localStorage.setItem(LOCAL_STORAGE_USER_TOKEN, JSON.stringify(user.access_token));
+            }
+
+            if (user.user) {
+                localStorage.setItem(LOCAL_STORAGE_USER, JSON.stringify(user.user));
+            }
+
+            dispatch(userActions.setAuthData(user));
 
             return response.data
         } catch (err) {

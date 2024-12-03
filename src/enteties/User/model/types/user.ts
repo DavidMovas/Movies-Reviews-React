@@ -2,16 +2,14 @@ export interface User {
     id: number;
     username: string;
     email: string;
+    avatarUrl: string;
     role: string;
+    bio?: string;
     createdAt: string;
-    deletedAt: string | null;
-}
-
-export interface UserToken {
-    access_token: string;
+    deletedAt?: string;
 }
 
 export interface UserSchema {
-    authData?: User
+    user?: User
     access_token?: string;
 }
