@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { memo, useCallback, useState } from 'react';
 import { AppDispatch } from "app/providers/StoreProvider/config/store";
 import { Button, ButtonTheme } from "shared/ui/Button/Button";
 import { classNames } from "shared/lib/classNames/classNames";
@@ -12,7 +12,8 @@ interface NavbarProps {
     className?: string;
 }
 
-export const Navbar = ({className}: NavbarProps) => {
+// eslint-disable-next-line react/display-name
+export const Navbar = memo(({className}: NavbarProps) => {
     const {t} = useTranslation("navbar");
 
     const [isAuthModal, setIsAuthModal] = useState(false);
@@ -61,4 +62,4 @@ export const Navbar = ({className}: NavbarProps) => {
             </LoginModal>
         </div>
     );
-};
+});

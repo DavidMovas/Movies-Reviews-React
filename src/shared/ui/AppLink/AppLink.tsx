@@ -1,6 +1,6 @@
 import { Link, LinkProps } from "react-router-dom";
 import { classNames } from "shared/lib/classNames/classNames";
-import React, { FC } from "react";
+import React, { FC, memo } from "react";
 import './AppLink.module.scss';
 
 export enum AppLinkTheme {
@@ -13,7 +13,8 @@ interface AppLinkProps extends LinkProps{
     theme?: AppLinkTheme;
 }
 
-export const AppLink:FC<AppLinkProps> = (props) => {
+// eslint-disable-next-line react/display-name
+export const AppLink:FC<AppLinkProps> = memo((props: AppLinkProps) => {
     const {to, className, children, theme = AppLinkTheme.PRIMARY, ...otherProps} = props;
 
     return (
@@ -25,4 +26,4 @@ export const AppLink:FC<AppLinkProps> = (props) => {
             {children}
         </Link>
     );
-};
+});

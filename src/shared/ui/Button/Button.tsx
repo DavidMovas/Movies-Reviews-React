@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, memo } from "react";
 import { classNames } from "shared/lib/classNames/classNames";
 import * as cls from './Button.module.css';
 
@@ -25,7 +25,8 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     disabled?: boolean;
 }
 
-export const Button:FC<ButtonProps>= (props) => {
+// eslint-disable-next-line react/display-name
+export const Button:FC<ButtonProps>= memo((props: ButtonProps) => {
     const {
         className,
         children,
@@ -53,4 +54,4 @@ export const Button:FC<ButtonProps>= (props) => {
             {children}
         </button>
     );
-};
+});

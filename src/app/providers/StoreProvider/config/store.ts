@@ -4,12 +4,14 @@ import { userReducer } from "enteties/User";
 import { createReducerManager } from "app/providers/StoreProvider/config/reducerManager";
 import { counterReducer } from "enteties/Counter";
 import { loginReducer } from "features/AuthByUsername/model/slice/loginSlice";
+import { profileReducer } from "enteties/Profile";
 
 export  function createReduxStore(initialState?: StateSchema) {
     const rootReducers: ReducersMapObject<StateSchema> = {
         counter: counterReducer,
         user: userReducer,
-        loginForm: loginReducer
+        loginForm: loginReducer,
+        profile: profileReducer,
     };
 
     const reducerManager = createReducerManager(rootReducers);

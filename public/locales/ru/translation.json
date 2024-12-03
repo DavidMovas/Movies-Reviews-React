@@ -10,5 +10,6 @@
   "Login form": "Форма авторизации",
   "You entered wrong email or password": "Вы ввели неправильный логин или пароль",
   "User not found": "Пользователь не найден",
-  "Server error, please try later": "Ошибка сервера, попробуйте позже"
+  "Server error, please try later": "Ошибка сервера, попробуйте позже",
+  "Profile": "Страница профиля"
 }

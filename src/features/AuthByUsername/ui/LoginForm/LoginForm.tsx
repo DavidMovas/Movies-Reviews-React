@@ -3,10 +3,9 @@ import { classNames } from "shared/lib/classNames/classNames";
 import { useTranslation } from "react-i18next";
 import { Button, ButtonTheme } from "shared/ui/Button/Button";
 import { Input } from "shared/ui/Input/Input";
-import { useDispatch, useSelector, useStore } from "react-redux";
+import { useSelector, useStore } from "react-redux";
 import { loginActions, loginReducer } from "features/AuthByUsername/model/slice/loginSlice";
 import { loginByEmail, LoginError } from "../../model/services/loginByEmail/loginByEmail";
-import { AppDispatch } from "app/providers/StoreProvider/config/store";
 import { Text, TextTheme } from "shared/ui/Text/Text";
 import { ReduxStoreWithManager } from "app/providers/StoreProvider";
 import { getLoginUserEmail } from "enteties/User/model/selectors/getLoginUserEmail/getLoginUserEmail";
@@ -14,10 +13,12 @@ import { getLoginUserPassword } from "enteties/User/model/selectors/getLoginUser
 import { getLoginUserError } from "enteties/User/model/selectors/getLoginUserError/getLoginUserError";
 import { getLogingUserIsLoading } from "enteties/User/model/selectors/getLoginUserIsLoading/getLogingUserIsLoading";
 import { DynamicModuleLoader, ReducersList } from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
+import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import * as cls from "./LoginForm.module.css";
 
 interface LoginFormProps {
     className?: string;
+    onSuccess: () => void;
 }
 
 const initialReducers: ReducersList = {
@@ -25,10 +26,12 @@ const initialReducers: ReducersList = {
 }
 
 // eslint-disable-next-line react/display-name
-const LoginForm = memo(({className}: LoginFormProps) => {
-   const {t} = useTranslation();
+const LoginForm = memo((props: LoginFormProps) => {
+   const {className, onSuccess} = props
 
-   const dispatch = useDispatch<AppDispatch>();
+    const {t} = useTranslation();
+
+   const dispatch = useAppDispatch();
    const store = useStore() as ReduxStoreWithManager;
    const email = useSelector(getLoginUserEmail);
    const password = useSelector(getLoginUserPassword);
@@ -50,9 +53,12 @@ const LoginForm = memo(({className}: LoginFormProps) => {
         dispatch(loginActions.setPassword(value))
     }, [dispatch])
 
-    const onLoginClick = useCallback(() => {
-        dispatch(loginByEmail({email, password}));
-    }, [dispatch, email, password])
+    const onLoginClick = useCallback(async () => {
+        const result = await dispatch(loginByEmail({email, password}));
+        if (result.meta.requestStatus === 'fulfilled') {
+            onSuccess();
+        }
+    }, [onSuccess, dispatch, email, password])
 
     return (
         <DynamicModuleLoader key={'loginForm'} reducers={initialReducers} removeAfterUnmount={true}>

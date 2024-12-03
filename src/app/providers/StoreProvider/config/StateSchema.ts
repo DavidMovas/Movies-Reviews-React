@@ -6,11 +6,13 @@ import {
     ReducersMapObject, UnknownAction,
 } from "@reduxjs/toolkit";
 import { CounterSchema } from "enteties/Counter";
+import { ProfileSchema } from "enteties/Profile";
 
 export interface StateSchema {
     counter: CounterSchema;
     user: UserSchema,
     loginForm: LoginSchema,
+    profile: ProfileSchema,
 }
 
 export type StateSchemaKey = keyof StateSchema;
