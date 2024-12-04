@@ -7,5 +7,15 @@
   "Ops, please try reload page later": "Ops, please try reload page later",
   "Cancel": "Cancel",
   "Save": "Save",
-  "Avatar": "Avatar"
+  "Avatar": "Avatar",
+  "Server error": "Server error",
+  "Invalid user data": "Invalid user data",
+  "User not found": "User not found",
+  "Username cannot be empty": "Username cannot be empty",
+  "Username is to short": "Username is to short",
+  "Username is to long": "Username is to long",
+  "Email cannot be empty": "Email cannot be empty",
+  "Email is not valid": "Email is not valid",
+  "Bio cannot be empty": "Bio cannot be empty",
+  "Bio contains more than 2000 characters": "Bio contains more than 2000 characters"
 }

@@ -3,18 +3,19 @@ import { ThunkConfig } from "app/providers/StoreProvider";
 import { getProfileForm, Profile } from "enteties/Profile";
 import axios from "axios";
 import { getUserData } from "enteties/User";
+import { validateProfile } from "enteties/Profile/model/service/validateProfile/validateProfile";
+import { ValidateProfileError } from "enteties/Profile/model/types/profile";
 
-export enum ResponseError {
-    INCORRECT_DATA = "INCORRECT_DATA",
-    NOT_FOUND = "NOT_FOUND",
-    SERVER_ERROR = "SERVER_ERROR",
-}
-
-export const updateProfileData = createAsyncThunk<Profile, void, ThunkConfig<string>>(
+export const updateProfileData = createAsyncThunk<Profile, void, ThunkConfig<ValidateProfileError[]>>(
     "profile/updateProfileData",
     async (_, {extra, rejectWithValue, getState}) => {
         const userData = getUserData(getState());
         const formData = getProfileForm(getState());
+
+        const errors = validateProfile({profile: formData, username:true});
+        if (errors.length) {
+            return rejectWithValue(errors);
+        }
 
         try {
             const response = await extra.api.put<Profile>(`/api/users/${userData.user?.id}`, formData);
@@ -25,15 +26,15 @@ export const updateProfileData = createAsyncThunk<Profile, void, ThunkConfig<str
                 const statusCode = err.response?.status;
 
                 if (statusCode === 400) {
-                    return rejectWithValue(ResponseError.INCORRECT_DATA);
+                    return rejectWithValue([ValidateProfileError.INCORRECT_DATA]);
                 }
 
                 if (statusCode === 404) {
-                    return  rejectWithValue(ResponseError.NOT_FOUND);
+                    return  rejectWithValue([ValidateProfileError.NOT_FOUND]);
                 }
             }
 
-            return rejectWithValue(ResponseError.SERVER_ERROR);
+            return rejectWithValue([ValidateProfileError.SERVER_ERROR]);
         }
     },
 );

@@ -7,5 +7,15 @@
   "Ops, please try reload page later": "Ошибка, пожалуйста, попробуйте перезагрузить страницу позже",
   "Cancel": "Отмена",
   "Save": "Сохранить",
-  "Avatar": "Аватар"
+  "Avatar": "Аватар",
+  "Server error": "Ошибка сервера",
+  "Invalid user data": "Неверные данные пользователя",
+  "User not found": "Пользователь не найден",
+  "Username cannot be empty": "Имя пользователя не может быть пустым",
+  "Username is to short": "Имя пользователя слишком короткое",
+  "Username is to long": "Имя пользователя слишком длинное",
+  "Email cannot be empty": "Email не может быть пустым",
+  "Email is not valid": "Email не валидный",
+  "Bio cannot be empty": "Bio не может быть пустым",
+  "Bio contains more than 2000 characters": "Bio содержит более 2000 символов"
 }
