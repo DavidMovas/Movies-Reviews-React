@@ -1,22 +1,31 @@
 .item {
-    margin-top: 10px;
+    margin-top: 25px;
     display: flex;
     align-items: center;
 }
 
 .icon {
     fill: var(--inverted-primary-color);
+    scale: 1;
+    transition: 0.3s scale;
 }
 
 .link {
+    font: var(--font-m);
     margin-left: 10px;
     opacity: 1;
+    transition: 0.3s opacity;
 }
 
 .collapsed {
     .link {
         opacity: 0;
-        transition: 0.2s opacity;
+        transition: 0.3s opacity;
         width: 0;
+    }
+
+    .icon {
+        scale: 1.4;
+        transition: 0.3s scale;
     }
 }
