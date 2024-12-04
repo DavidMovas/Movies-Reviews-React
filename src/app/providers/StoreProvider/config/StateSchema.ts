@@ -5,17 +5,17 @@ import {
     Reducer,
     ReducersMapObject, UnknownAction,
 } from "@reduxjs/toolkit";
-import { CounterSchema } from "enteties/Counter";
 import { ProfileSchema } from "enteties/Profile";
 import { NavigateOptions } from "react-router/dist/lib/context";
 import { To } from "@remix-run/router";
 import { AxiosInstance } from "axios";
+import { MovieDetailsSchema } from "enteties/Movie";
 
 export interface StateSchema {
-    counter: CounterSchema;
     user: UserSchema,
     loginForm: LoginSchema,
     profile: ProfileSchema,
+    movies: MovieDetailsSchema,
 }
 
 export type StateSchemaKey = keyof StateSchema;

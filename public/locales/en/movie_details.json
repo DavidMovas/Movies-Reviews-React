@@ -1,3 +1,9 @@
 {
-
+  "Movie not found": "Movie not found",
+  "Server error": "Server error",
+  "Incorrect data": "Incorrect data",
+  "Not found": "Not found",
+  "Description": "Description",
+  "Release date": "Release date",
+  "Genres": "Genres"
 }

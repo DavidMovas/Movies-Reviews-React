@@ -5,6 +5,10 @@
   --secondary-color: #6366f1;
   --inverted-primary-color: rgb(30 30 30 / var(--text-opacity));
   --inverted-secondary-color: #6366f1;
+
+  // Skeleton
+  --skeleton-color: rgb(14 20 27 / 25%);
+  --skeleton-shadow: var(--primary-color);
 }
 
 .Modal.dark {

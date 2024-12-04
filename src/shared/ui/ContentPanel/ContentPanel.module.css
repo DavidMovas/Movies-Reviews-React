@@ -1,0 +1,6 @@
+.ContentPanel {
+    display: flex;
+    width: 100%;
+    background: var(--inverted-bg-color);
+    border-radius: var(--border-radius-modal);
+}

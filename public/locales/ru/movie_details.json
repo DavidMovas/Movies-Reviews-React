@@ -1,3 +1,9 @@
 {
-
+  "Movie not found": "Фильм не найден",
+  "Server error": "Ошибка сервера, пожалуйста, попробуйте позже",
+  "Incorrect data": "Некорректные данные",
+  "Not found": "Не найдено",
+  "Description": "Описание",
+  "Release date": "Дата выхода",
+  "Genres": "Жанры"
 }

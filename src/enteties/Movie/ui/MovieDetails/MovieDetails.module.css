@@ -1,0 +1,60 @@
+.MovieDetails {
+    min-height: 100%;
+}
+
+.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.avatarWrapper {
+    display: flex;
+    margin-right: auto;
+    justify-content: center;
+    width: 100%;
+}
+
+.avatar {
+    margin: 0 auto;
+}
+
+.title {
+    margin-top: 20px;
+}
+
+.panels {
+    margin-top: 30px;
+}
+
+.panel {
+    margin-top: 30px;
+}
+
+.blockInfo {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+
+.genres {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.label {
+    display: flex;
+}
+
+.text {
+    display: flex;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.skeleton {
+    margin-top: 20px;
+}

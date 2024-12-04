@@ -5,6 +5,7 @@ import {
 } from "@reduxjs/toolkit";
 import { StateSchema, StateSchemaKey } from "app/providers/StoreProvider";
 import { ReducerManager } from "app/providers/StoreProvider/config/StateSchema";
+import { UserSchema } from "enteties/User";
 
 export function createReducerManager(initialReducers: ReducersMapObject<StateSchema>): ReducerManager {
     const reducers = {...initialReducers };
