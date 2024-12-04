@@ -40,6 +40,23 @@
     --red-light: rgba(255 0 0 / 50%);
     --red-dark: rgb(203 0 0 / 50%);
 
+    // Rating colors
+    --rating-color-primary: #FFAC33;
+    --rating-color-secondary: var(--secondary-color);
+
+    // Sidebar colors
+    --sidebar-bg-color: #333;
+    --sidebar-text-color: #fff;
+    --sidebar-hover-bg-color: #444;
+    --sidebar-hover-text-color: #fff;
+
+    // Pagination colors
+    --pagination-bg-color: #333;
+    --pagination-text-color: #fff;
+    --pagination-hover-bg-color: #444;
+    --pagination-hover-text-color: #fff;
+    --pagination-active-bg-color: #fff;
+
     // Skeleton
     --skeleton-color: var(--primary-color);
     --skeleton-shadow:var(--secondary-color);

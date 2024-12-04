@@ -1,0 +1,13 @@
+.Rating {
+    display: flex;
+    align-items: center;
+    color: var(--rating-color-primary);
+}
+
+.primary {
+    color: var(--rating-color-primary);
+}
+
+.secondary {
+    color: var(--rating-color-secondary);
+}
