@@ -1,8 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { ThunkConfig } from "app/providers/StoreProvider";
-import { getProfileUsername, Profile } from "enteties/Profile";
-import { getUserData } from "enteties/User";
+import { getProfileForm, Profile } from "enteties/Profile";
 import axios from "axios";
+import { getUserData } from "enteties/User";
 
 export enum ResponseError {
     INCORRECT_DATA = "INCORRECT_DATA",
@@ -10,20 +10,14 @@ export enum ResponseError {
     SERVER_ERROR = "SERVER_ERROR",
 }
 
-export const fetchProfileData = createAsyncThunk<Profile, void, ThunkConfig<string>>(
-    "profile/fetchProfileData",
+export const updateProfileData = createAsyncThunk<Profile, void, ThunkConfig<string>>(
+    "profile/updateProfileData",
     async (_, {extra, rejectWithValue, getState}) => {
-        let username = getProfileUsername(getState())
-        if (!username) {
-            username = getUserData(getState()).user?.username
-        }
+        const userData = getUserData(getState());
+        const formData = getProfileForm(getState());
 
         try {
-            const response = await extra.api.get<Profile>(`/api/users/username/${username}`, {
-                headers: {
-                    Authorization: undefined
-                }
-            });
+            const response = await extra.api.put<Profile>(`/api/users/${userData.user?.id}`, formData);
 
             return response.data
         } catch (err) {

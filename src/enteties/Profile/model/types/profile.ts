@@ -1,15 +1,16 @@
 export interface Profile {
-    username: string;
-    email: string;
-    avatarUrl: string;
-    role: string;
+    username?: string;
+    email?: string;
+    avatarUrl?: string;
+    role?: string;
     bio?: string
-    created_at: string;
+    created_at?: string;
     deleted_at?: string;
 }
 
 export interface ProfileSchema {
     data?: Profile;
+    form?: Profile;
     isLoading: boolean;
     error?: string;
     readonly: boolean;

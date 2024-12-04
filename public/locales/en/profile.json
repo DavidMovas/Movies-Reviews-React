@@ -2,5 +2,10 @@
   "Profile": "Profile",
   "Edit": "Edit",
   "Username": "Username",
-  "Bio": "Bio"
+  "Bio": "User bio",
+  "Error": "Error",
+  "Ops, please try reload page later": "Ops, please try reload page later",
+  "Cancel": "Cancel",
+  "Save": "Save",
+  "Avatar": "Avatar"
 }

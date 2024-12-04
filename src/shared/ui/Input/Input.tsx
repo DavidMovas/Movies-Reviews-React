@@ -1,8 +1,8 @@
 import React, { ChangeEvent, InputHTMLAttributes, memo } from 'react';
-import { classNames } from "shared/lib/classNames/classNames";
+import { classNames, Mods } from "shared/lib/classNames/classNames";
 import * as cls from "./Input.module.css"
 
-type HTMLInputProps = Omit< InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange'>
+type HTMLInputProps = Omit< InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange' | 'readonly'>;
 
 interface InputProps extends HTMLInputProps{
     className?: string;
@@ -10,6 +10,7 @@ interface InputProps extends HTMLInputProps{
     onChange?: (value: string) => void;
     label?: string;
     placeholder?: string;
+    readonly?: boolean;
 }
 
 // eslint-disable-next-line react/display-name
@@ -21,6 +22,7 @@ export const Input = memo((props: InputProps) => {
         type = "text",
         label,
         placeholder,
+        readonly,
         ...otherProps
     } = props;
 
@@ -28,10 +30,14 @@ export const Input = memo((props: InputProps) => {
         onChange?.(e.target.value);
     }
 
+    const mods: Mods = {
+        [cls.readonly]: readonly ?? false,
+    }
+
 
     return (
         <div
-            className={classNames(cls.InputWrapper, {}, [className])}
+            className={classNames(cls.InputWrapper, mods, [className])}
         >
             {label && (
                 <div className={cls.label}>
@@ -44,6 +50,7 @@ export const Input = memo((props: InputProps) => {
                 onChange={onChangeHandler}
                 className={cls.input}
                 placeholder={placeholder}
+                readOnly={readonly}
                 {...otherProps}
             />
         </div>
