@@ -5,6 +5,10 @@ import { AboutPage } from "pages/about";
 import { NotFoundPage } from "pages/not_found_page";
 import { ProfilePage } from "pages/profile_page";
 
+type AppRoutesProps = RouteProps & {
+    authOnly?: boolean;
+}
+
 export enum AppRoutes {
     MAIN = 'main',
     ABOUT = 'about',
@@ -21,7 +25,7 @@ export const RoutePath: Record<AppRoutes, string> = {
     [AppRoutes.PROFILE_PAGE]: '/profile'
 }
 
-export const routeConfig: Record<AppRoutes, RouteProps> = {
+export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     [AppRoutes.MAIN]: {
         path: RoutePath.main,
         element: <MainPage/>
@@ -32,7 +36,8 @@ export const routeConfig: Record<AppRoutes, RouteProps> = {
     },
     [AppRoutes.PROFILE_PAGE]: {
         path: RoutePath.profile_page,
-        element: <ProfilePage/>
+        element: <ProfilePage/>,
+        authOnly: true
     },
     [AppRoutes.NOT_FOUND]: {
         path: RoutePath.not_found,

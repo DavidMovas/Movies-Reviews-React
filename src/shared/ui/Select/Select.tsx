@@ -14,6 +14,7 @@ export interface SelectProps {
     options?: SelectOption[];
     value?: string;
     onChange?: (value: string) => void;
+    disabled?: boolean;
 }
 
 // eslint-disable-next-line react/display-name
@@ -25,6 +26,7 @@ export const Select = memo((props: SelectProps) => {
         options,
         value,
         onChange,
+        disabled,
     } = props;
 
     const onChangeHandler = (e: ChangeEvent<HTMLSelectElement>) => {
@@ -54,7 +56,7 @@ export const Select = memo((props: SelectProps) => {
             {label &&
                 <span className={cls.label}>{t(label)}</span>
             }
-            <select className={cls.select} value={value} onChange={onChangeHandler}>
+            <select className={cls.select} value={value} onChange={onChangeHandler} disabled={disabled}>
                 {optionsList}
             </select>
         </div>

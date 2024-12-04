@@ -64,6 +64,7 @@ export const ProfileCart = (props: ProfileCartProps) => {
                 </div>}
                 <Select
                     value={data?.avatarUrl}
+                    disabled={readonly}
                     options={[
                         { content: "Standard", value: "https://gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y" },
                         { content: "Young man with glasses", value: "https://img.freepik.com/free-vector/young-man-with-glasses-avatar_1308-175928.jpg?t=st=1733292327~exp=1733295927~hmac=1728daca2e1616de6202c8d49592e04c19c769ae5af39fd99af8e4db1c3e026f&w=900" },
