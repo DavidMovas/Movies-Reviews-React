@@ -12,4 +12,6 @@ export interface User {
 export interface UserSchema {
     user?: User
     access_token?: string;
+
+    _invited: boolean
 }

@@ -4,14 +4,15 @@ import { AppRouter } from "app/providers/Router";
 import { Navbar } from "widgets/Navbar";
 import { Sidebar } from "widgets/Sidebar";
 import { useTheme } from "app/providers/ThemeProvider";
-import { useDispatch } from "react-redux";
-import { userActions } from "enteties/User";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserInvited, userActions } from "enteties/User";
 import { AppDispatch } from "app/providers/StoreProvider/config/store";
 
 
 const App = () => {
     const {theme} = useTheme();
     const dispatch = useDispatch<AppDispatch>();
+    const invited = useSelector(getUserInvited);
 
     useEffect(() => {
         dispatch(userActions.initAuthData());
@@ -23,7 +24,7 @@ const App = () => {
                 <Navbar />
                 <div className="content-page">
                     <Sidebar />
-                    <AppRouter />
+                    {invited && <AppRouter />}
                 </div>
             </Suspense>
         </div>
