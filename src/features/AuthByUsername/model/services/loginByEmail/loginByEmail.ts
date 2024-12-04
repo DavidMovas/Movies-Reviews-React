@@ -23,8 +23,6 @@ export const loginByEmail = createAsyncThunk<UserSchema, LoginByEmailProps, Thun
 
             const user: UserSchema = JSON.parse(JSON.stringify(response.data));
 
-            console.log("username: ", user.user?.username)
-
             if (user.access_token) {
                 localStorage.setItem(LOCAL_STORAGE_USER_TOKEN, JSON.stringify(user.access_token));
             }

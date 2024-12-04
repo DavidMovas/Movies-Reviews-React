@@ -1,9 +1,11 @@
-import React, { memo } from 'react';
+import React, { memo, useEffect } from 'react';
 import { classNames } from "shared/lib/classNames/classNames";
-import * as cls from "./ProfilePage.module.css"
-import { useTranslation } from "react-i18next";
 import { DynamicModuleLoader, ReducersList } from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
-import { profileReducer } from "enteties/Profile";
+import { fetchProfileData, ProfileCart, profileReducer } from "enteties/Profile";
+import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
+import { useSelector } from "react-redux";
+import * as cls from "./ProfilePage.module.css"
+import { getUserData } from "enteties/User";
 
 const reducers: ReducersList = {
     profile: profileReducer
@@ -15,14 +17,19 @@ interface ProfilePageProps {
 
 // eslint-disable-next-line react/display-name
 const ProfilePage = memo(({className}: ProfilePageProps) => {
-    const { t } = useTranslation();
+    const data = useSelector(getUserData);
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        dispatch(fetchProfileData({username: data.user?.username ?? ""}));
+    }, [dispatch, data]);
 
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount={true}>
             <div
                 className={classNames(cls.ProfilePage, {}, [className])}
             >
-                <h1>{t('Profile')}</h1>
+                <ProfileCart />
             </div>
         </DynamicModuleLoader>
     );

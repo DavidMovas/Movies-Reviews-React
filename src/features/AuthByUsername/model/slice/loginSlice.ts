@@ -1,6 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {LoginSchema} from "../types/loginSchema";
 import { loginByEmail } from "../services/loginByEmail/loginByEmail";
+import { action } from "commander";
+import { UserSchema } from "enteties/User";
+import { Profile } from "enteties/Profile";
 
 const initialState: LoginSchema = {
     email: '',

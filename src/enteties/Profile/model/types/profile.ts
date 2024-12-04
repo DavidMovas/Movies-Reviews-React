@@ -1,12 +1,11 @@
-import { UserRole } from "shared/consts/common";
-
 export interface Profile {
     username: string;
     email: string;
     avatarUrl: string;
-    role: UserRole;
+    role: string;
+    bio?: string
     created_at: string;
-    deleted_at: string | null;
+    deleted_at?: string;
 }
 
 export interface ProfileSchema {
