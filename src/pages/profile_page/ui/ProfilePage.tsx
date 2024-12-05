@@ -36,7 +36,7 @@ const ProfilePage = memo(({className}: ProfilePageProps) => {
     const formData = useSelector(getProfileForm);
     const isLoafing = useSelector(getProfileIsLoading);
     const error = useSelector(getProfileError);
-    const readonly =useSelector(getProfileReadonly);
+    const readonly = useSelector(getProfileReadonly);
     const validationErrors = useSelector(getProfileValidationErrors);
 
     const validateErrorTranslation = {

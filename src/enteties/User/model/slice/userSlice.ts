@@ -31,7 +31,7 @@ export const userSlice = createSlice({
             state.access_token = undefined;
             localStorage.removeItem(LOCAL_STORAGE_USER);
             localStorage.removeItem(LOCAL_STORAGE_USER_TOKEN);
-        }
+        },
     },
 });
 

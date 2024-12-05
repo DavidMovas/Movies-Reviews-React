@@ -1,8 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { ThunkConfig } from "app/providers/StoreProvider";
-import { getProfileUsername, Profile } from "enteties/Profile";
-import { getUserData } from "enteties/User";
+import { Profile, getProfileUsername } from "enteties/Profile";
 import axios from "axios";
+import { getUserData } from "enteties/User";
 
 export enum ResponseError {
     INCORRECT_DATA = "INCORRECT_DATA",
@@ -10,12 +10,16 @@ export enum ResponseError {
     SERVER_ERROR = "SERVER_ERROR",
 }
 
+
 export const fetchProfileData = createAsyncThunk<Profile, void, ThunkConfig<string>>(
     "profile/fetchProfileData",
     async (_, {extra, rejectWithValue, getState}) => {
-        let username = getProfileUsername(getState())
+
+        let username: string | undefined = getProfileUsername(getState());
+        const userData = getUserData(getState());
+
         if (!username) {
-            username = getUserData(getState()).user?.username
+            username = userData.user?.username;
         }
 
         try {

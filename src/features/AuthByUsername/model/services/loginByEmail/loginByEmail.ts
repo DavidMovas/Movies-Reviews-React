@@ -19,6 +19,7 @@ export const loginByEmail = createAsyncThunk<UserSchema, LoginByEmailProps, Thun
     "login/loginByEmail",
     async (authData, {dispatch, extra, rejectWithValue}) => {
         try {
+            dispatch(userActions.logout());
             const response = await extra.api.post("/api/auth/login", authData);
 
             const user: UserSchema = JSON.parse(JSON.stringify(response.data));
