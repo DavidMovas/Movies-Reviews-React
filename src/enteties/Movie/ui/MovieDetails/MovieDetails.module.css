@@ -8,6 +8,13 @@
     align-items: center;
 }
 
+.ratingInfo {
+    display: flex;
+    margin-top: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
 .loading {
     display: flex;
     align-items: center;
@@ -19,13 +26,6 @@
     margin-right: auto;
     justify-content: center;
     width: 100%;
-}
-
-.rating {
-    display: flex;
-    margin-top: 20px;
-    align-items: center;
-    justify-content: center;
 }
 
 .avatar {
@@ -70,11 +70,4 @@
 
 .skeleton {
     margin-top: 20px;
-}
-
-.imdb {
-    display: flex;
-    margin-top: 20px;
-    width: 80px;
-    height: 30px;
 }

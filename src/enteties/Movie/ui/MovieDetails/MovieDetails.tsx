@@ -10,16 +10,15 @@ import {
     getMovieDetailsIsLoading,
 } from "../../model/selectors/getMovieDetails";
 import { useSelector } from "react-redux";
-import { IconLink } from "shared/ui/IconLink/IconLink";
 import { Text, TextAlign, TextSize, TextTheme } from "shared/ui/Text/Text";
 import { useTranslation } from "react-i18next";
 import { Skeleton } from "shared/ui/Skeleton/Skeleton";
 import { Avatar } from "shared/ui/Avatar/Avatar";
 import { formatDateString } from "shared/lib/date/formatDateString";
 import { ContentPanel } from "shared/ui/ContentPanel/ContentPanel";
-import IMDbIcon from "shared/assets/icons/IMDB_Logo_2016.svg";
 import * as cls from "./MovieDetails.module.css"
-import { Rating } from "shared/ui/Rating/Rating";
+import { MovieRatingInfo } from "enteties/Movie/ui/MovieDetails/MovieRatingInfo/MovieRatingInfo";
+import { MovieGenrePanel } from "enteties/Movie/ui/MovieDetails/MovieGernePanel/MovieGenrePanel";
 
 interface MovieDetailsProps {
     className?: string;
@@ -83,26 +82,18 @@ export const MovieDetails = memo((props: MovieDetailsProps) => {
                 </div>
                 <div className={cls.header}>
                     <Text className={cls.title} title={data?.title} size={TextSize.LARGE}/>
-                    <div className={cls.rating}>
-                        <Rating className={cls.rating} value={data?.avgRating}/>
-                        <IconLink className={cls.imdb} Svg={IMDbIcon} url={data?.imdbUrl}/>
-                    </div>
+                    <MovieRatingInfo
+                        className={cls.ratingInfo}
+                        avgRating={data?.avgRating}
+                        imdbRating={data?.imdbRating}
+                        imdbUrl={data?.imdbUrl}
+                        metascore={data?.metascore}
+                        metascoreUrl={data?.metascoreUrl}
+                    />
                 </div>
 
                 <div className={cls.panels}>
-                    <ContentPanel className={cls.panel}>
-                        <div className={cls.blockInfo}>
-                            <Text className={cls.lable} title={t("Genres")} size={TextSize.SMALL}/>
-                            <div className={cls.genres}>
-                                {data?.genres && Object.values(data?.genres).map((genre) => {
-                                    return(
-                                        <Text key={genre.id} text={genre.name} theme={TextTheme.INVERTED} size={TextSize.SMALL}/>
-                                    )
-                                })}
-                            </div>
-                        </div>
-                    </ContentPanel>
-
+                    <MovieGenrePanel className={cls.panel} genres={data?.genres} />
                     <ContentPanel  className={cls.panel}>
                         <div className={cls.blockInfo}>
                             <Text className={cls.lable} title={t("Release date")} size={TextSize.SMALL}/>

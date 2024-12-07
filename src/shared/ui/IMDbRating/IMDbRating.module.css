@@ -1,0 +1,12 @@
+.IMDbRating {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font: var(--font-m);
+}
+
+.imdbUrl {
+    display: flex;
+    width: 80px;
+    height: 30px;
+}

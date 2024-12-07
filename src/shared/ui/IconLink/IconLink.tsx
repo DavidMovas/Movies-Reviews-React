@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { memo, SVGProps } from 'react';
 import { classNames } from "shared/lib/classNames/classNames";
 import * as cls from "./IconLink.module.css"
 
@@ -8,7 +8,8 @@ interface IconLinkProps {
     url?: string;
 }
 
-export const IconLink = ({className, Svg, url}: IconLinkProps) => {
+// eslint-disable-next-line react/display-name
+export const IconLink = memo(({className, Svg, url}: IconLinkProps) => {
     const clickHandler = () => {
         window.open(url, '_blank');
     }
@@ -19,4 +20,4 @@ export const IconLink = ({className, Svg, url}: IconLinkProps) => {
             onClick={clickHandler}
         />
     )
-}
+});
