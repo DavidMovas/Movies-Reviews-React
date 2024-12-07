@@ -1,13 +1,15 @@
 .Rating {
     display: flex;
     align-items: center;
-    color: var(--rating-color-primary);
+    justify-content: center;
+    gap : 5px;
+    font: var(--font-m);
 }
 
 .primary {
-    color: var(--rating-color-primary);
+    color: var(--primary-color);
 }
 
 .secondary {
-    color: var(--rating-color-secondary);
+    color: var(--secondary-color);
 }
