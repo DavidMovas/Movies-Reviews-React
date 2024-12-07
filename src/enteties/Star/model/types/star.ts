@@ -3,7 +3,7 @@ export interface Star {
     firstName: string;
     middleName?: string;
     lastName: string;
-    posterUrl?: string;
+    avatarUrl?: string;
     createdAt: string;
 }
 
@@ -12,6 +12,7 @@ export interface StarDetails {
     firstName: string;
     middleName?: string;
     lastName: string;
+    avatarUrl?: string;
     birthPlace?: string;
     birthDate?: string;
     deathDate?: string;

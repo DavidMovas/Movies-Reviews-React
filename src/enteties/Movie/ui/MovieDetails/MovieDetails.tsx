@@ -16,9 +16,10 @@ import { Skeleton } from "shared/ui/Skeleton/Skeleton";
 import { Avatar } from "shared/ui/Avatar/Avatar";
 import { formatDateString } from "shared/lib/date/formatDateString";
 import { ContentPanel } from "shared/ui/ContentPanel/ContentPanel";
-import * as cls from "./MovieDetails.module.css"
 import { MovieRatingInfo } from "enteties/Movie/ui/MovieDetails/MovieRatingInfo/MovieRatingInfo";
 import { MovieGenrePanel } from "enteties/Movie/ui/MovieDetails/MovieGernePanel/MovieGenrePanel";
+import { MovieCastPanel } from "enteties/Movie/ui/MovieDetails/MovieCastPanel/MovieCastPanel";
+import * as cls from "./MovieDetails.module.css"
 
 interface MovieDetailsProps {
     className?: string;
@@ -83,7 +84,7 @@ export const MovieDetails = memo((props: MovieDetailsProps) => {
                 <div className={cls.header}>
                     <Text className={cls.title} title={data?.title} size={TextSize.LARGE}/>
                     <MovieRatingInfo
-                        className={cls.ratingInfo}
+                        className={cls.ratingBlock}
                         avgRating={data?.avgRating}
                         imdbRating={data?.imdbRating}
                         imdbUrl={data?.imdbUrl}
@@ -107,6 +108,8 @@ export const MovieDetails = memo((props: MovieDetailsProps) => {
                             <Text className={cls.text} text={data?.description} size={TextSize.SMALL} theme={TextTheme.INVERTED}/>
                         </div>
                     </ContentPanel>
+
+                    <MovieCastPanel className={cls.panel} cast={data?.cast}/>
                 </div>
             </>
         )

@@ -15,6 +15,7 @@ export enum TextAlign {
 }
 
 export enum TextSize {
+    SMALL_S = "small-s",
     SMALL ='small',
     MEDIUM ='medium',
     LARGE = 'large'
