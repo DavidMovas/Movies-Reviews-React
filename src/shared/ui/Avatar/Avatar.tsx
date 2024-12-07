@@ -5,7 +5,8 @@ import * as cls from "./Avatar.module.css"
 interface AvatarProps {
     className?: string;
     src?: string;
-    size?: number;
+    width?: number | string;
+    height?: number | string;
     alt?: string;
 }
 
@@ -13,7 +14,8 @@ export const Avatar = (props: AvatarProps) => {
     const {
         className,
         src,
-        size,
+        width,
+        height,
         alt = "User Avatar"
     } = props;
 
@@ -21,8 +23,8 @@ export const Avatar = (props: AvatarProps) => {
 
     const styles = useMemo<CSSProperties>(() => {
         return {
-            width: size ?? 100,
-            height: size ?? 100,
+            width: width ?? 100,
+            height: height ?? 100,
         }
     }, [])
 

@@ -13,7 +13,7 @@ export const fetchMovieById = createAsyncThunk<MovieDetails, string, ThunkConfig
     "movies/fetchMovieById",
     async (movieId, {extra, rejectWithValue}) => {
         try {
-            const response = await extra.api.get<MovieDetails>(`/api/movies/${movieId}`);
+            const response = await extra.api.get<MovieDetails>(`/api/movies/v2/${movieId}`);
 
             return response.data
         } catch (err) {

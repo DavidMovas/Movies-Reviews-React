@@ -4,12 +4,12 @@ import { Genre } from "enteties/Genre";
 export interface Movie {
     id: number;
     title: string;
+    posterUrl?: string;
     description: string;
     releaseDate: string;
-    AvgRating?: number;
-    posterUrl?: string;
+    avgRating?: number;
     version?: number;
-    createdAt: string;
+    createdAt: string
 }
 
 export interface MovieDetails {
@@ -17,8 +17,12 @@ export interface MovieDetails {
     title: string;
     description: string;
     releaseDate: string;
-    AvgRating?: number;
+    avgRating?: number;
     posterUrl?: string;
+    imdbRating?: number;
+    imdbUrl?: string;
+    metascore?: number;
+    metascoreUrl?: string;
     version?: number;
     createdAt: string;
     genres: Genre[];

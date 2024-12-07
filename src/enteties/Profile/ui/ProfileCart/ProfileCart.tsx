@@ -60,7 +60,7 @@ export const ProfileCart = (props: ProfileCartProps) => {
         >
             <div className={cls.data}>
                 {data?.avatarUrl && <div className={cls.avatarWrapper}>
-                    <Avatar src={data.avatarUrl} size={150}></Avatar>
+                    <Avatar src={data.avatarUrl} width={150} height={150}></Avatar>
                 </div>}
                 <Select
                     value={data?.avatarUrl}

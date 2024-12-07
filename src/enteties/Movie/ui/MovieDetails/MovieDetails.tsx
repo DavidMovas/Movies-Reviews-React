@@ -1,4 +1,4 @@
-import React, { memo, useEffect } from 'react';
+                                                                                                                                     import React, { memo, useEffect } from 'react';
 import { classNames } from "shared/lib/classNames/classNames";
 import { DynamicModuleLoader, ReducersList } from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import { moviesReducer } from "../../model/slices/movieDetailsSlice";
@@ -52,7 +52,7 @@ export const MovieDetails = memo((props: MovieDetailsProps) => {
 
     useEffect(() => {
         dispatch(fetchMovieById(movieId))
-    }, [dispatch, movieId]);
+    }, [dispatch, movieId])
 
     if(isLoading) {
         content = (
@@ -75,7 +75,7 @@ export const MovieDetails = memo((props: MovieDetailsProps) => {
                     <Avatar
                         className={cls.avatar}
                         src={data?.posterUrl ?? "https://www.svgrepo.com/show/530128/movie.svg"}
-                        size={300}
+                        height={400} width={300}
                     />
                 </div>
                 <Text className={cls.title} title={data?.title} size={TextSize.LARGE}/>
@@ -93,12 +93,14 @@ export const MovieDetails = memo((props: MovieDetailsProps) => {
                             </div>
                         </div>
                     </ContentPanel>
+
                     <ContentPanel  className={cls.panel}>
                         <div className={cls.blockInfo}>
                             <Text className={cls.lable} title={t("Release date")} size={TextSize.SMALL}/>
                             <Text className={cls.text} text={formatDateString(data?.releaseDate)} size={TextSize.SMALL} theme={TextTheme.INVERTED}/>
                         </div>
                     </ContentPanel>
+
                     <ContentPanel className={cls.panel}>
                         <div className={cls.blockInfo}>
                             <Text className={cls.lable} title={t("Description")} size={TextSize.SMALL}/>
