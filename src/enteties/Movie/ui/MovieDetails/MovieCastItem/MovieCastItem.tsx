@@ -21,14 +21,6 @@ export const MovieCastItem = ({className, person}: MovieCastItemProps) => {
                     size={TextSize.SMALL_S}
                 />
 
-                {person?.role &&
-                    <Text
-                        text={namesToDefault([person?.role])}
-                        theme={TextTheme.INVERTED}
-                        size={TextSize.SMALL_S}
-                    />
-                }
-
                 {person?.heroName &&
                     <Text
                         text={namesToDefault([person?.heroName])}

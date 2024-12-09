@@ -1,0 +1,9 @@
+.MovieReviewPanel {
+    display: flex;
+    margin-top: 20px;
+}
+
+.title {
+    display: flex;
+    margin: 20px;
+}

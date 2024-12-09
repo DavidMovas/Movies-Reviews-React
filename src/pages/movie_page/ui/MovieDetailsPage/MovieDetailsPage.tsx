@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import { MovieDetailsItem } from "enteties/Movie";
 import { useParams } from "react-router-dom";
 import { Text } from "shared/ui/Text/Text";
+import { MovieReviewPanel } from "enteties/Movie/ui/MovieDetails/MovieReviewPanel/MovieReviewPanel";
 
 interface MovieDetailsPageProps {
     className?: string;
@@ -33,6 +34,7 @@ const MovieDetailsPage = (props: MovieDetailsPageProps) => {
             className={classNames(cls.MovieDetailsPage, {}, [className])}
         >
             <MovieDetailsItem movieId={id}/>
+            <MovieReviewPanel movieId={id}/>
         </div>
     );
 }
