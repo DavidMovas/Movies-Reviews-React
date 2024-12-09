@@ -1,9 +1,23 @@
 .MovieReviewPanel {
     display: flex;
+    flex-direction: column;
     margin-top: 20px;
+}
+
+.block {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .title {
     display: flex;
     margin: 20px;
+}
+
+.reviews {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: 0 40px 20px;
 }

@@ -1,3 +1,22 @@
 .MovieReviewItem {
 
 }
+
+.review {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 20px;
+}
+
+.content {
+    display: flex;
+    text-align: left;
+}
